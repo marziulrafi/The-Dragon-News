@@ -4,7 +4,7 @@ import Category from '../Category';
 const LeftSide = () => {
     return (
         <div>
-            <Suspense fallback={<span className="loading loading-dots loading-xl"></span>}>
+            <Suspense>
                 <Category />
             </Suspense>
         </div>

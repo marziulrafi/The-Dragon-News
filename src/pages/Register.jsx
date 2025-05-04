@@ -17,11 +17,11 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value
         const terms = e.target.terms.checked
-        console.log(name, photo, email, password, terms)
+        // console.log(name, photo, email, password, terms)
 
         createUser(email, password).then(result => {
             const user = result.user
-            console.log(user);
+            // console.log(user);
             
             updateUser({
                 displayName: name, photoURL: photo

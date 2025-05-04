@@ -8,20 +8,20 @@ const Login = () => {
     const { login } = use(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-    console.log(location);
+    // console.log(location);
 
     const handleLogin = (e) => {
         e.preventDefault()
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         setErrorMessage('')
 
         login(email, password)
             .then((result) => {
-                console.log(result.user);
+                // console.log(result.user);
                 navigate(`${location.state ? location.state : "/"}`)
             }).catch((error) => {
                 setErrorMessage(error.message);
