@@ -1,11 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Register = () => {
 
-    const {createUser, setUser} = use(AuthContext)
-
+    const { createUser, setUser } = use(AuthContext)
+    const [errorMessage, setErrorMessage] = useState('')
     const handleRegister = (e) => {
         e.preventDefault()
 
@@ -15,12 +15,13 @@ const Register = () => {
         const password = e.target.password.value
         const terms = e.target.terms.checked
         console.log(name, photo, email, password, terms)
-        
+
         createUser(email, password).then(result => {
-            // console.log(result.user);
+            console.log(result.user);
             setUser(true)
-        }).catch ((error) => {
+        }).catch((error) => {
             console.log(error.message);
+            setErrorMessage(error.message)
         })
     }
 
@@ -46,6 +47,10 @@ const Register = () => {
                         <button type='submit' className="btn btn-neutral mt-4">Register</button>
                         <p className='pt-4 text-center'>Already have an account? <Link className=' text-secondary font-semibold underline' to="/auth/login">Login Here</Link></p>
                     </form>
+
+                    {
+                        errorMessage && <p className='text-red-600 font-bold mt-4'>{errorMessage}</p>
+                    }
                 </div>
 
             </div>
